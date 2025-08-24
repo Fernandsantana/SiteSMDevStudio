@@ -21,7 +21,7 @@ const SITE_CONFIG = {
     // Estatísticas da empresa
     stats: {
         projects: 14,
-        technologies: 8,
+        technologies: 10,
         customization: 100,
         responseTime: 24
     },
@@ -59,12 +59,14 @@ const SITE_CONFIG = {
     technologies: [
         { name: 'Python', icon: 'fab fa-python', color: '#3776ab' },
         { name: 'C# .NET', icon: 'fab fa-microsoft', color: '#512bd4' },
+        { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933' },
+        { name: 'PHP', icon: 'fab fa-php', color: '#777bb4' },
         { name: 'Angular', icon: 'fab fa-angular', color: '#dd0031' },
         { name: 'React', icon: 'fab fa-react', color: '#61dafb' },
         { name: 'JavaScript', icon: 'fab fa-js-square', color: '#f7df1e' },
-        { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933' },
         { name: 'SQL Server', icon: 'fas fa-database', color: '#cc2927' },
-        { name: 'PostgreSQL', icon: 'fas fa-database', color: '#336791' }
+        { name: 'PostgreSQL', icon: 'fas fa-database', color: '#336791' },
+        { name: 'MySQL', icon: 'fas fa-database', color: '#4479a1' }
     ],
 
     // Diferenciais da empresa
