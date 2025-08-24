@@ -117,17 +117,10 @@ const SITE_CONFIG = {
 
     // Configurações de formulário
     form: {
-        requiredFields: ['name', 'phone', 'project'],
-        placeholder: {
-            name: 'Seu nome completo',
-            phone: 'Seu telefone com DDD',
-            project: 'Conte-nos sobre seu projeto, o que você precisa, funcionalidades desejadas, objetivos do sistema...'
-        },
-        // Configurações de email simples
-        email: {
-            to: 'contato@smdevstudio.com.br',
-            subject: 'Novo Projeto - SM Dev Studio',
-            useMailto: true // Usar mailto para abrir cliente de email
+        // Configurações simplificadas - apenas WhatsApp
+        whatsapp: {
+            number: '5511990102690',
+            message: 'Olá! Gostaria de saber mais sobre os serviços da SM Dev Studio.'
         }
     },
 

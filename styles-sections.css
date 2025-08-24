@@ -408,7 +408,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
     align-items: start;
     width: 100%;
@@ -463,6 +463,145 @@
 .contact-item p {
     color: var(--light-text);
     font-size: 1rem;
+}
+
+/* Contact Action Card */
+.contact-action-card {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.05));
+    backdrop-filter: blur(25px);
+    padding: var(--spacing-2xl);
+    border-radius: var(--radius-xl);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.contact-action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+}
+
+.action-icon {
+    font-size: 4rem;
+    color: #25d366;
+    margin-bottom: var(--spacing-lg);
+    filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.5));
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.contact-action-card h3 {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 2;
+}
+
+.contact-action-card p {
+    color: var(--light-text);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 2;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all var(--transition-bounce);
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(37, 211, 102, 0.3);
+    margin-bottom: var(--spacing-xl);
+    z-index: 2;
+}
+
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.8s ease;
+}
+
+.whatsapp-btn:hover::before {
+    left: 100%;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+    border-color: rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-btn i {
+    font-size: 1.4rem;
+    transition: transform var(--transition-normal);
+}
+
+.whatsapp-btn:hover i {
+    transform: scale(1.1);
+}
+
+.contact-tips {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.contact-tips h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+}
+
+.contact-tips ul {
+    list-style: none;
+    text-align: left;
+}
+
+.contact-tips li {
+    color: var(--light-text);
+    margin-bottom: var(--spacing-xs);
+    position: relative;
+    padding-left: var(--spacing-md);
+    font-size: 0.95rem;
+}
+
+.contact-tips li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
 }
 
 /* Contact Form */
@@ -812,13 +951,8 @@
         gap: var(--spacing-lg);
     }
 
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-
-    .contact-form {
-        padding: var(--spacing-lg);
+    .contact-action-card {
+        padding: var(--spacing-xl);
     }
     
     .contact-card {
@@ -876,8 +1010,13 @@
         margin: 0 var(--spacing-sm);
     }
     
-    .contact-form {
+    .contact-action-card {
         margin: 0 var(--spacing-sm);
+    }
+    
+    .whatsapp-btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 1.1rem;
     }
 }
 
@@ -954,8 +1093,13 @@
         margin: 0;
     }
     
-    .contact-form {
+    .contact-action-card {
         margin: 0;
+    }
+    
+    .whatsapp-btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 1.1rem;
     }
 
     .social-links {

@@ -77,6 +77,68 @@ Se quiser uma solução mais avançada no futuro:
 
 Mas a solução atual é **perfeita** para a maioria dos casos!
 
+## 📱 Sistema de Contato - WhatsApp
+
+### ✅ **Contato Direto e Simples**
+
+O site agora usa **WhatsApp** como método principal de contato:
+
+1. **Botão CTA no Hero**: Direciona para WhatsApp com mensagem pré-preenchida
+2. **Seção de Contato**: Card dedicado com botão WhatsApp e dicas
+3. **Footer**: Mantém email apenas para referência
+
+### 🎯 **Como Funciona**
+
+- **Clique no botão WhatsApp** em qualquer lugar do site
+- **WhatsApp Web/App abre** automaticamente
+- **Mensagem pré-preenchida** com texto personalizado
+- **Conversa direta** com a equipe
+
+### 📱 **Experiência do Usuário**
+
+1. Usuário clica em "Solicitar Orçamento" ou "Iniciar Conversa"
+2. WhatsApp abre automaticamente com mensagem:
+   ```
+   "Olá! Gostaria de saber mais sobre os serviços da SM Dev Studio."
+   ```
+3. Usuário pode personalizar a mensagem
+4. Conversa direta com atendimento
+
+### 🔧 **Vantagens**
+
+- ✅ **Contato instantâneo** via WhatsApp
+- ✅ **Sem formulários** complexos
+- ✅ **Conversa natural** e direta
+- ✅ **Funciona em todos os dispositivos**
+- ✅ **Mensagens pré-preenchidas** para facilitar
+- ✅ **Email mantido** apenas no rodapé
+
+### 💬 **Mensagens Pré-preenchidas**
+
+- **Hero Section**: "Olá! Gostaria de solicitar um orçamento para meu projeto."
+- **Seção Contato**: "Olá! Gostaria de saber mais sobre os serviços da SM Dev Studio."
+
+### 📧 **Email no Rodapé**
+
+O email `contato@smdevstudio.com.br` permanece apenas no rodapé para:
+- **Referência** de contato
+- **Profissionalismo** do site
+- **Contato alternativo** se necessário
+
+### 🚀 **Configuração**
+
+Para alterar o número ou mensagens:
+
+```javascript
+// Em config.js
+form: {
+    whatsapp: {
+        number: '5511990102690', // Seu número
+        message: 'Sua mensagem personalizada'
+    }
+}
+```
+
 ## 🛠️ Estrutura do Projeto
 
 ```
