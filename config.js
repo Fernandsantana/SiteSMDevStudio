@@ -122,6 +122,27 @@ const SITE_CONFIG = {
             name: 'Seu nome completo',
             phone: 'Seu telefone com DDD',
             project: 'Conte-nos sobre seu projeto, o que você precisa, funcionalidades desejadas, objetivos do sistema...'
+        },
+        // Configurações de email
+        email: {
+            // Formspree (recomendado - mais simples)
+            formspree: {
+                enabled: true,
+                endpoint: 'https://formspree.io/f/xpzgqjqj', // SUBSTITUA PELA SUA URL
+                redirect: false
+            },
+            // EmailJS (alternativo)
+            emailjs: {
+                enabled: false,
+                serviceId: 'YOUR_SERVICE_ID', // SUBSTITUA
+                templateId: 'YOUR_TEMPLATE_ID', // SUBSTITUA
+                userId: 'YOUR_USER_ID' // SUBSTITUA
+            },
+            // Backend próprio
+            backend: {
+                enabled: false,
+                endpoint: '/api/send-email'
+            }
         }
     },
 
