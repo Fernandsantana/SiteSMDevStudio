@@ -316,48 +316,52 @@ class App {
             return;
         }
 
-        // Preparar para envio real
+        // Preparar para envio
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         submitBtn.disabled = true;
         
         try {
-            // Preparar dados para envio
-            const emailData = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                project: formData.get('project'),
-                email: 'contato@smdevstudio.com.br', // Email de destino
-                subject: `Novo Projeto - ${formData.get('name')}`,
-                message: `
-                    <h3>Novo Projeto Recebido</h3>
-                    <p><strong>Nome:</strong> ${formData.get('name')}</p>
-                    <p><strong>Telefone:</strong> ${formData.get('phone')}</p>
-                    <p><strong>Descrição do Projeto:</strong></p>
-                    <p>${formData.get('project').replace(/\n/g, '<br>')}</p>
-                    <hr>
-                    <p><em>Enviado através do site SM Dev Studio</em></p>
-                `
-            };
-
-            // Enviar usando Formspree (solução mais simples)
-            const response = await this.sendEmailFormspree(emailData);
+            // Solução mais simples: usar mailto com dados pré-preenchidos
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const project = formData.get('project');
             
-            if (response.ok) {
-                const name = formData.get('name');
-                this.showNotification(`🚀 Mensagem enviada com sucesso, ${name}!\n\nRecebemos seu projeto e entraremos em contato em até 2 horas úteis.\n\nObrigado por escolher a SM Dev Studio!`, 'success');
-                e.target.reset();
-                
-                // Tracking de sucesso
-                if (window.SMDevStudio && window.SMDevStudio.Analytics) {
-                    window.SMDevStudio.Analytics.trackFormSubmission('contact_success');
-                }
-            } else {
-                throw new Error('Erro no envio');
+            // Criar email com dados pré-preenchidos
+            const subject = `Novo Projeto - ${name}`;
+            const body = `
+Olá SM Dev Studio!
+
+Recebi um novo projeto através do site:
+
+Nome: ${name}
+Telefone: ${phone}
+
+Descrição do Projeto:
+${project}
+
+Aguardo retorno!
+            `.trim();
+            
+            // Abrir cliente de email padrão
+            const mailtoLink = `mailto:contato@smdevstudio.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Tentar abrir o cliente de email
+            window.location.href = mailtoLink;
+            
+            // Mostrar mensagem de sucesso
+            this.showNotification(`✅ Formulário preenchido com sucesso, ${name}!\n\nSeu cliente de email foi aberto automaticamente.\n\nSe não abriu, copie os dados e envie para: contato@smdevstudio.com.br`, 'success');
+            
+            // Limpar formulário
+            e.target.reset();
+            
+            // Tracking de sucesso
+            if (window.SMDevStudio && window.SMDevStudio.Analytics) {
+                window.SMDevStudio.Analytics.trackFormSubmission('contact_success');
             }
             
         } catch (error) {
-            console.error('Erro ao enviar email:', error);
-            this.showNotification('Erro ao enviar mensagem. Tente novamente ou entre em contato diretamente pelo WhatsApp.', 'error');
+            console.error('Erro ao processar formulário:', error);
+            this.showNotification('Erro ao processar formulário. Entre em contato diretamente pelo WhatsApp: (11) 99010-2690', 'error');
             
             // Tracking de erro
             if (window.SMDevStudio && window.SMDevStudio.Analytics) {
@@ -367,86 +371,6 @@ class App {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }
-    }
-
-    // Método para enviar email usando Formspree
-    async sendEmailFormspree(data) {
-        // Usar configuração do config.js
-        const config = window.SITE_CONFIG?.form?.email?.formspree;
-        const formspreeUrl = config?.endpoint || 'https://formspree.io/f/xpzgqjqj';
-        
-        const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('phone', data.phone);
-        formData.append('project', data.project);
-        formData.append('email', data.email);
-        formData.append('subject', data.subject);
-        formData.append('message', data.message);
-        
-        return await fetch(formspreeUrl, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-    }
-
-    // Método alternativo usando EmailJS (se preferir)
-    async sendEmailEmailJS(data) {
-        // Configuração do EmailJS
-        const emailjsConfig = {
-            serviceId: 'YOUR_SERVICE_ID', // Substitua pelo seu Service ID
-            templateId: 'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID
-            userId: 'YOUR_USER_ID' // Substitua pelo seu User ID
-        };
-        
-        const templateParams = {
-            to_email: 'contato@smdevstudio.com.br',
-            from_name: data.name,
-            from_phone: data.phone,
-            project_description: data.project,
-            subject: data.subject
-        };
-        
-        // Carregar EmailJS se não estiver carregado
-        if (typeof emailjs === 'undefined') {
-            await this.loadEmailJS();
-        }
-        
-        return await emailjs.send(
-            emailjsConfig.serviceId,
-            emailjsConfig.templateId,
-            templateParams,
-            emailjsConfig.userId
-        );
-    }
-
-    // Carregar EmailJS dinamicamente
-    async loadEmailJS() {
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-            script.onload = () => {
-                emailjs.init('YOUR_USER_ID'); // Substitua pelo seu User ID
-                resolve();
-            };
-            script.onerror = reject;
-            document.head.appendChild(script);
-        });
-    }
-
-    // Método para enviar email usando backend próprio (se tiver servidor)
-    async sendEmailBackend(data) {
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
-        
-        return response;
     }
 
     showNotification(message, type = 'info') {

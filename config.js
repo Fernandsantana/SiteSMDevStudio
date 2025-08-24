@@ -123,26 +123,11 @@ const SITE_CONFIG = {
             phone: 'Seu telefone com DDD',
             project: 'Conte-nos sobre seu projeto, o que você precisa, funcionalidades desejadas, objetivos do sistema...'
         },
-        // Configurações de email
+        // Configurações de email simples
         email: {
-            // Formspree (recomendado - mais simples)
-            formspree: {
-                enabled: true,
-                endpoint: 'https://formspree.io/f/xpzgqjqj', // SUBSTITUA PELA SUA URL
-                redirect: false
-            },
-            // EmailJS (alternativo)
-            emailjs: {
-                enabled: false,
-                serviceId: 'YOUR_SERVICE_ID', // SUBSTITUA
-                templateId: 'YOUR_TEMPLATE_ID', // SUBSTITUA
-                userId: 'YOUR_USER_ID' // SUBSTITUA
-            },
-            // Backend próprio
-            backend: {
-                enabled: false,
-                endpoint: '/api/send-email'
-            }
+            to: 'contato@smdevstudio.com.br',
+            subject: 'Novo Projeto - SM Dev Studio',
+            useMailto: true // Usar mailto para abrir cliente de email
         }
     },
 
