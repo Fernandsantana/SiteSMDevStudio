@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SM Dev Studio - Desenvolvimento de sistemas personalizados que se moldam ao seu negócio. Soluções web, mobile e em nuvem.">
+    <meta name="keywords" content="desenvolvimento web, sistemas personalizados, aplicativos mobile, soluções em nuvem, SM Dev Studio">
+    <meta name="author" content="SM Dev Studio">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smdevstudio.com.br/">
+    <meta property="og:title" content="SM Dev Studio - Sistemas que se Moldam ao seu Negócio">
+    <meta property="og:description" content="Desenvolvemos soluções tecnológicas personalizadas. O sistema se molda ao seu jeito de trabalhar.">
+    <meta property="og:image" content="https://smdevstudio.com.br/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://smdevstudio.com.br/">
+    <meta property="twitter:title" content="SM Dev Studio - Sistemas que se Moldam ao seu Negócio">
+    <meta property="twitter:description" content="Desenvolvemos soluções tecnológicas personalizadas. O sistema se molda ao seu jeito de trabalhar.">
+    <meta property="twitter:image" content="https://smdevstudio.com.br/og-image.jpg">
+
+    <title>SM Dev Studio - Sistemas que se Moldam ao seu Negócio</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome with fallback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-sections.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-logo">SM</div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Carregando...</div>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="background-elements">
+        <div class="organic-shapes">
+            <div class="organic-shape shape-1"></div>
+            <div class="organic-shape shape-2"></div>
+            <div class="organic-shape shape-3"></div>
+        </div>
+        <div class="particles-container" id="particlesContainer"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SM Dev Studio</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Início</a>
+                <a href="#services" class="nav-link">Serviços</a>
+                <a href="#technologies" class="nav-link">Tecnologias</a>
+                <a href="#about" class="nav-link">Sobre</a>
+                <a href="#contact" class="nav-link">Contato</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="logo">SM Dev Studio</span>
+            </h1>
+            <h2 class="hero-tagline">O sistema que se molda ao Seu Negócio!</h2>
+            <p class="hero-subtitle">Desenvolvemos soluções tecnológicas personalizadas que se adaptam ao seu jeito de trabalhar, não o contrário.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="cta-button primary">
+                    <i class="fas fa-rocket"></i>
+                    <span>Solicitar Orçamento</span>
+                </a>
+                <a href="#services" class="cta-button secondary">
+                    <i class="fas fa-code"></i>
+                    <span>Ver Serviços</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-number" data-target="14">0</div>
+                <div class="stat-label">Projetos Entregues</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-label">Tecnologias Dominadas</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">% Personalizado</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-number" data-target="24">0</div>
+                <div class="stat-label">Horas de Resposta</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <p class="section-subtitle">Soluções completas em desenvolvimento de software</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Aplicações web modernas, responsivas e escaláveis com as melhores práticas de desenvolvimento.</p>
+                    <ul class="service-features">
+                        <li>Sites institucionais</li>
+                        <li>E-commerce</li>
+                        <li>Sistemas web complexos</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Apps Mobile</h3>
+                    <p>Aplicativos nativos e híbridos para Android e iOS com foco em experiência do usuário.</p>
+                    <ul class="service-features">
+                        <li>Apps nativos</li>
+                        <li>Apps híbridos</li>
+                        <li>PWA (Progressive Web Apps)</li>
+                    </ul>
+                </div>
+                
+
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Soluções em Nuvem</h3>
+                    <p>Arquiteturas escaláveis, seguras e de alta disponibilidade na nuvem.</p>
+                    <ul class="service-features">
+                        <li>Migração para nuvem</li>
+                        <li>Arquitetura serverless</li>
+                        <li>DevOps e CI/CD</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="technologies">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Tecnologias</h2>
+                <p class="section-subtitle">Stack moderna e robusta para projetos de qualidade</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="fab fa-microsoft"></i>
+                    <span>C# .NET</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fab fa-angular"></i>
+                    <span>Angular</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="250">
+                    <i class="fab fa-react"></i>
+                    <span>React</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-js-square"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="350">
+                    <i class="fab fa-node-js"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-database"></i>
+                    <span>SQL Server</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="450">
+                    <i class="fas fa-database"></i>
+                    <span>PostgreSQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h2>Sobre Nosso Projeto</h2>
+                    <p class="about-description">Somos uma empresa especializada em desenvolvimento de sistemas personalizados. Nossa missão é criar soluções tecnológicas que se adaptem perfeitamente ao seu negócio, oferecendo sistemas únicos e eficientes.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-icon">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Sistemas 100% Personalizados</h4>
+                                <p>Desenvolvidos especificamente para sua empresa e necessidades</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Tecnologias Modernas</h4>
+                                <p>Utilizamos as melhores tecnologias para garantir segurança e performance</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Suporte Completo</h4>
+                                <p>Acompanhamento durante e após a implementação do projeto</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Foco na Experiência</h4>
+                                <p>Sistemas intuitivos e fáceis de usar para seus colaboradores</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual" data-aos="fade-left">
+                    <div class="about-card">
+                        <div class="about-card-header">
+                            <h3>Nossa Abordagem</h3>
+                        </div>
+                        <div class="about-card-content">
+                            <p>Desenvolvemos sistemas que se moldam ao seu jeito de trabalhar, não o contrário. Cada projeto é único e desenvolvido com foco total nas necessidades específicas da sua empresa.</p>
+                            <div class="about-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Análise detalhada das necessidades</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Desenvolvimento sob medida</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Testes e validação completa</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Suporte contínuo e evolução</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Vamos Conversar</h2>
+                <p class="section-subtitle">Conte-nos sobre seu projeto e vamos criar algo incrível juntos</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <h3>Informações de Contato</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contato@smdevstudio.com.br</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>(11) 99010-2690</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 9h às 18h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container" data-aos="fade-left">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nome Completo *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project">Descreva seu Projeto *</label>
+                            <textarea id="project" name="project" rows="6" required placeholder="Conte-nos sobre seu projeto, o que você precisa, funcionalidades desejadas, objetivos do sistema..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Enviar Mensagem</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>SM Dev Studio</h3>
+                        <p>Transformando ideias em soluções digitais</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/5511990102690" target="_blank" rel="noopener" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:contato@smdevstudio.com.br" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> contato@smdevstudio.com.br</p>
+                        <p><i class="fab fa-whatsapp"></i> (11) 99010-2690</p>
+                        <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP - Brasil</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 SM Dev Studio. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
