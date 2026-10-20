@@ -1,0 +1,16 @@
+# Mesclar na composição da entrada independente durante janela aprovada.
+services:
+  borda:
+    networks:
+      smdevstudio: {}
+    volumes:
+      - type: bind
+        source: ${SM_FRAGMENTO:?Defina caminho absoluto do fragmento revisado}
+        target: /etc/caddy/sites/smdevstudio.caddy
+        read_only: true
+        bind:
+          create_host_path: false
+networks:
+  smdevstudio:
+    external: true
+    name: smdevstudio-entrada

@@ -1,0 +1,35 @@
+(seguranca) {
+ header {
+  -Server
+  X-Content-Type-Options nosniff
+  X-Frame-Options DENY
+  Referrer-Policy strict-origin-when-cross-origin
+  Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+  Cache-Control "no-cache"
+ }
+}
+{
+ admin off
+ persist_config off
+ auto_https off
+}
+:8080 {
+ root * /srv
+ encode gzip
+ import seguranca
+ @private path /.git* /.env* /scripts/* /infra/* /*.md
+ respond @private 404
+ @methods not method GET HEAD
+ respond @methods 405
+ @health path /_health
+ respond @health "ok" 200
+ file_server
+ handle_errors {
+  import seguranca
+  rewrite * /404.html
+  file_server {
+   status {err.status_code}
+  }
+ }
+}
