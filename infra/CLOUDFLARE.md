@@ -1,16 +1,20 @@
 # Cloudflare para SM Dev Studio e Matheo
 
-Preparação local aprovada em 20/10/2026. Este roteiro não autoriza execução externa.
-Usar plano Free, sem adicionais pagos. Malu mantém DNS, proxy, certificados e aplicação atuais.
-Fonte das configurações de DNS/CDN deste pacote; [publicação e OAuth](../PUBLICACAO.md).
+Janela D158 autorizada em 20/10/2026. Estado às 21:17 Brasília: `.com` delegado à Cloudflare
+Free, A na VPS DNS-only, www CNAME DNS-only, HTTPS 200/302. AAAA antigos dos dois domínios
+removidos com confirmação. `.com.br` apontado à VPS em DNS-only às 22:02 Brasília; certificados
+emitidos e aceite público aprovado nos quatro nomes; proxy/Full strict pendentes de decisão.
+Borda independente já instalada; Malu saudável, DNS e aplicação preservados. Matheo não publicado.
+Sequência retomada com autorização; apontamento `.com.br` concluído. Ver o [documento de continuidade](../../appmatheo/docs/continuidade-publicacao.md)
+no repositório irmão appmatheo.
 
 ## Estado observado e destino
 
-Leitura dos painéis em 20/10: `.com` usa DNS Hostinger e redireciona para `.com.br`.
-`.com.br` usa Cloudflare Free, proxy ativo, SSL Full, origem antiga A/AAAA e zero Page Rules.
-Há registros legados de FTP/e-mail e verificação Google. Zero Page Rules não prova ausência de
-Redirect Rules, Workers ou outros serviços: revisar todos antes da janela. O 525 observado é
-compatível com a hospedagem antiga desativada; não foi diagnosticado o handshake na origem.
+Exportações anteriores das duas zonas estão preservadas em guarda privada. `.com.br` tinha SSL
+Full, zero Page Rules, zero Redirect Rules e nenhuma Workers Route; isso não audita todas as regras.
+Full strict/Universal SSL final ainda exigem conferência. Registros de e-mail/verificação/FTP foram
+preservados. Redirect antigo Hostinger não foi removido. Não refazer delegação ou exclusões concluídas.
+Fonte do plano DNS/CDN; [publicação e OAuth](../PUBLICACAO.md).
 
 Destino: as duas zonas SM na Cloudflare; registrador permanece Hostinger. Site principal `.com`;
 aliases redirecionados pela borda Caddy já preparada, sem duplicar regras de redirect na CDN.

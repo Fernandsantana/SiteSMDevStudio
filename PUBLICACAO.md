@@ -1,18 +1,25 @@
 # Publicação do site e integrações de backup
 
-Estado: candidata local. Autorizados commit local e backup cifrado externo (D152 Matheo). Sem push, contratação, alteração de DNS, OAuth, servidor ou deploy.
+Estado D158 conferido em 20/10/2026 às 21:17 Brasília: entrada independente ativa e Malu
+saudável com mesmas imagens/dados. Site `.com` HTTPS 200 e www 302; `.com.br` apontado
+em 20/10 à noite (ver abaixo). Matheo não publicado. AAAA antigos removidos com confirmação; A `.com` na VPS,
+DNS-only. Em 20/10 às 22:02 Brasília, `.com.br` e www apontados à VPS em DNS-only com confirmação
+de Fernando; certificados emitidos pela borda e os quatro nomes aprovados no aceite público (HTTPS,
+redirects com caminho/consulta, 404, cabeçalhos, seis páginas de integração). Proxy/Full strict e
+OAuth durável pendentes. Roteiro e evidências: `../appmatheo/docs/continuidade-publicacao.md`.
+Sem push, contratação ou upgrade.
 
 ## Destino e limites
 
 Destino aprovado para preparação local: VPS existente, com serviço estático e entrada independente dos ciclos de publicação das aplicações. Domínio principal `https://smdevstudio.com`; `.com.br` e aliases `www` encaminham para ele preservando caminho e consulta. A antiga hospedagem PHP/HTML não foi encontrada ativa.
 
-Em 20/10/2026, Fernando aprovou preparar o plano Cloudflare para SM e Matheo, mantendo Malu como está. O [plano de DNS/CDN, HTTPS, aceite e retorno](infra/CLOUDFLARE.md) contém a configuração candidata e substitui a hipótese anterior de destino indefinido. Nada foi aplicado nos provedores.
+Em 20/10/2026, Fernando aprovou preparar e depois iniciar o plano Cloudflare para SM e Matheo, preservando Malu. O [plano de DNS/CDN, HTTPS, aceite e retorno](infra/CLOUDFLARE.md) contém os critérios da configuração; a delegação `.com` é a primeira alteração aplicada.
 
-O `.com` ainda usa DNS Hostinger e redirect para `.com.br`. A zona `.com.br` já usa Cloudflare Free com proxy e origem antiga; SSL Full e zero Page Rules observados. A coleta não elimina a necessidade de revisar outras regras. Preservar registros de e-mail/verificação e exportar zonas antes de qualquer mudança.
+O `.com` foi delegado à Cloudflare Free, com A na VPS e www CNAME DNS-only; AAAA antigo removido; o redirect antigo Hostinger ainda não foi removido. A zona `.com.br` já usa Cloudflare Free com proxy e origem antiga; SSL Full e zero Page Rules observados. Exportações de ambas as zonas preservadas. Conferir demais regras antes do apontamento, preservando registros de e-mail/verificação.
 
 Configuração local: [serviço do site](infra/compose.yaml), [servidor estático](infra/Caddyfile), [fragmento HTTPS](infra/smdevstudio.caddy) e [overlay da entrada independente](infra/compose.borda-adicional.yaml). Não instalar no frontend do Malu nem ocupar 80/443 antes da janela específica. O ensaio local usa `compose.ensaio.yaml`, que não deve ir para a composição de produção.
 
-A separação da entrada pública continua pendente no servidor. DNS/Cloudflare não resolve essa dependência. A aplicação futura exige autorização, backup recuperável, pausa coordenada e roteiro de retorno das aplicações já documentado no Matheo.
+A separação da entrada pública foi aplicada na D158, com retorno da primeira tentativa e sucesso da segunda. Não repetir a troca inicial; seguir o estado e os gates restantes no documento de continuidade do Matheo.
 
 ## Conteúdo público e pacote
 
