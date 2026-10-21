@@ -4,7 +4,8 @@ Janela D158 autorizada em 20/10/2026. Estado às 21:17 Brasília: `.com` delegad
 Free, A na VPS DNS-only, www CNAME DNS-only, HTTPS 200/302. AAAA antigos dos dois domínios
 removidos com confirmação. `.com.br` apontado à VPS em DNS-only às 22:02 Brasília; certificados
 emitidos e aceite público aprovado nos quatro nomes; proxy/Full strict pendentes de decisão.
-Borda independente já instalada; Malu saudável, DNS e aplicação preservados. Matheo não publicado.
+Borda independente já instalada; Malu saudável, DNS e aplicação preservados. Matheo publicado em 21/10
+(A `matheo` DNS-only; proxy/Full strict adiados para as três zonas).
 Sequência retomada com autorização; apontamento `.com.br` concluído. Ver o [documento de continuidade](../../appmatheo/docs/continuidade-publicacao.md)
 no repositório irmão appmatheo.
 

@@ -2,7 +2,7 @@
 
 Estado D158 conferido em 20/10/2026 às 21:17 Brasília: entrada independente ativa e Malu
 saudável com mesmas imagens/dados. Site `.com` HTTPS 200 e www 302; `.com.br` apontado
-em 20/10 à noite (ver abaixo). Matheo não publicado. AAAA antigos removidos com confirmação; A `.com` na VPS,
+em 20/10 à noite (ver abaixo). Matheo publicado em 21/10 em `matheo.smdevstudio.com` (DNS-only, mesma borda). AAAA antigos removidos com confirmação; A `.com` na VPS,
 DNS-only. Em 20/10 às 22:02 Brasília, `.com.br` e www apontados à VPS em DNS-only com confirmação
 de Fernando; certificados emitidos pela borda e os quatro nomes aprovados no aceite público (HTTPS,
 redirects com caminho/consulta, 404, cabeçalhos, seis páginas de integração). Proxy/Full strict e
