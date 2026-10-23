@@ -22,11 +22,30 @@ document.addEventListener("keydown", (event) => {
 });
 mobile.addEventListener("change", () => setMenu(false));
 
+const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+const motionToggle = document.querySelector(".motion-toggle");
+let motionPaused = false;
+function syncMotionToggle() {
+  // Com redução de movimento no sistema não há animação para pausar.
+  if (motionToggle) motionToggle.hidden = reduced.matches;
+}
+if (motionToggle) {
+  syncMotionToggle();
+  reduced.addEventListener("change", syncMotionToggle);
+  motionToggle.addEventListener("click", () => {
+    motionPaused = !motionPaused;
+    motionToggle.setAttribute("aria-pressed", String(motionPaused));
+    document.documentElement.dataset.motion = motionPaused
+      ? "paused"
+      : "running";
+    document.dispatchEvent(new Event("motionchange"));
+  });
+}
+
 const carousel = document.querySelector(".carousel");
 if (carousel) {
   const slides = [...carousel.querySelectorAll(".slide")];
   const counter = document.querySelector("#slide-count");
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   let current = 0;
   let timer;
   let visible = false;
@@ -44,6 +63,7 @@ if (carousel) {
     clearInterval(timer);
     const automatic =
       !reduced.matches &&
+      !motionPaused &&
       visible &&
       !hovering &&
       !focused &&
@@ -122,5 +142,6 @@ if (carousel) {
   ).observe(carousel);
   reduced.addEventListener("change", schedule);
   document.addEventListener("visibilitychange", schedule);
+  document.addEventListener("motionchange", schedule);
   schedule();
 }

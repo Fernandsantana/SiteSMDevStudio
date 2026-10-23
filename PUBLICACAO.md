@@ -36,7 +36,7 @@ Publicar SOMENTE o conteúdo de `site-publico.zip` em uma raiz exclusiva do site
 
 ## Antes da janela
 
-1. Confirmar destino, acesso autorizado, domínio principal e e-mail ativo de suporte nos dois projetos Google. WhatsApp permanece o contato do site; não inventar endereço de e-mail.
+1. Confirmar destino, acesso autorizado, domínio principal e e-mail ativo de suporte nos dois projetos Google. O site usa WhatsApp e o e-mail de privacidade `privacidade@smdevstudio.com.br`; não inventar outros endereços.
 2. Revisar identificação do responsável e correspondência dos avisos com a operação real. Confirmar retenção e proteção dos tokens em repouso antes de classificar a integração como pronta para produção; ACL local não comprova criptografia em repouso.
 3. Exportar zonas dos dois domínios, capturar redirecionamentos, SSL, proxy/CDN, TTL e nameservers em guarda privada. Registrar versão anterior do site e raiz de publicação. Não alterar registros de aplicações ou e-mail.
 4. Conferir DNS autoritativo de cada domínio. Registrador e operador de DNS podem ser diferentes. Nunca redefinir a zona ou importar uma zona genérica. A migração planejada de nameservers do `.com` segue exclusivamente as fases e controles DNSSEC do plano Cloudflare.
@@ -50,7 +50,7 @@ Publicar SOMENTE o conteúdo de `site-publico.zip` em uma raiz exclusiva do site
 3. Remover/substituir o redirecionamento antigo `.com` para `.com.br` na mesma janela coordenada. Apontar apenas apex/www dos domínios institucionais conforme instruções do destino escolhido. Tratar A e AAAA juntos: não deixar IPv6 apontando para a origem antiga. Não alterar `matheo`, outros subdomínios, MX, TXT ou a zona appmalu.
 4. Colocar o site na raiz exclusiva. Redirecionar HTTP para HTTPS. Testar `.com` como principal e só então configurar `.com.br`/www para ele, sem ciclo. Usar redirecionamento temporário na validação e permanente após o aceite, pois navegadores podem guardar 301.
 5. Configurar 404 para responder HTTP 404 com `404.html`; não fazer fallback de qualquer caminho para index. Bloquear listagem de diretórios/arquivos ocultos e servir somente arquivos públicos.
-6. Aplicar e testar `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e proteção contra enquadramento. CSP deve permitir apenas os recursos locais necessários; conferir primeiro os atributos style existentes antes de endurecer style-src. Não aplicar HSTS includeSubDomains/preload: afetaria subdomínios das aplicações. Cache curto/revalidação para HTML, CSS e JS sem hash no nome.
+6. Aplicar e testar `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e proteção contra enquadramento. CSP deve permitir apenas os recursos locais necessários; conferir primeiro os atributos style existentes antes de endurecer style-src. HSTS está ativo na borda com `max-age=31536000; includeSubDomains` (commit e404446, intencional): todos os subdomínios precisam servir HTTPS válido. Preload não está aplicado. Cache curto/revalidação para HTML, CSS e JS sem hash no nome.
 7. Validar HTTPS sem exceções, IPv4/IPv6 quando publicado, ausência de loops, página comercial, seis páginas OAuth, logo, CSS/JS, WhatsApp e 404. Conferir saúde externa das aplicações antes/depois. Qualquer regressão interrompe a janela.
 
 ## Retorno

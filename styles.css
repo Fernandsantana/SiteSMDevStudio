@@ -5,6 +5,8 @@
   --pink: #d32483;
   --purple: #7c24b5;
   --line: #d8d2d8;
+  /* Bordas de controles precisam de 3:1 sobre o papel; --line é só separador. */
+  --control-line: #8a7d8c;
 }
 * {
   box-sizing: border-box;
@@ -128,13 +130,46 @@ header nav a {
 }
 .hero-top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 38px;
+}
+.motion-toggle:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--control-line);
+  border-radius: 100px;
+  font-size: 12px;
+}
+.motion-toggle > span::before {
+  content: "❚❚";
+  font-size: 10px;
+  letter-spacing: -0.1em;
+}
+.motion-toggle[aria-pressed="true"] {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.motion-toggle[aria-pressed="true"] > span::before {
+  content: "▶";
+  letter-spacing: 0;
+}
+html[data-motion="paused"] *,
+html[data-motion="paused"] *::before,
+html[data-motion="paused"] *::after {
+  animation-play-state: paused !important;
 }
 .eyebrow {
   font:
-    600 10px/1.5 ui-monospace,
+    600 11px/1.5 ui-monospace,
     monospace;
   letter-spacing: 0.14em;
   display: flex;
@@ -203,7 +238,7 @@ header nav a {
   margin-top: 65px;
   padding-block: 22px;
   font:
-    10px ui-monospace,
+    11px ui-monospace,
     monospace;
   letter-spacing: 0.08em;
 }
@@ -229,7 +264,7 @@ header nav a {
   display: flex;
   justify-content: space-between;
   font:
-    8px ui-monospace,
+    10px ui-monospace,
     monospace;
   letter-spacing: 0.08em;
   color: #d2b9d3;
@@ -271,7 +306,7 @@ header nav a {
 }
 .node span {
   font:
-    8px ui-monospace,
+    10px ui-monospace,
     monospace;
   color: #df8abf;
 }
@@ -389,7 +424,7 @@ h2 em {
   width: 44px;
   height: 44px;
   background: none;
-  border: 1px solid #b5a9b7;
+  border: 1px solid var(--control-line);
   border-radius: 50%;
   font-size: 20px;
 }
@@ -421,7 +456,7 @@ h2 em {
 }
 .slide-number {
   font:
-    10px ui-monospace,
+    11px ui-monospace,
     monospace;
   color: var(--muted);
 }
@@ -437,7 +472,7 @@ h2 em {
   margin-top: 19px;
 }
 .pill {
-  font-size: 10px;
+  font-size: 12px;
   border-bottom: 1px solid #b1a2b7;
   display: inline-block;
   padding-bottom: 5px;
@@ -633,7 +668,7 @@ h2 em {
 }
 .steps span {
   font:
-    10px ui-monospace,
+    11px ui-monospace,
     monospace;
   color: #db9aca;
 }
@@ -674,6 +709,7 @@ h2 em {
 }
 footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 35px;
@@ -682,8 +718,18 @@ footer {
   border-top: 1px solid var(--line);
 }
 .copyright {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
+}
+.company {
+  width: 100%;
+  font-size: 12px;
+  color: var(--muted);
+}
+.company a {
+  color: var(--ink);
+  text-decoration: underline;
+  overflow-wrap: anywhere;
 }
 footer nav {
   display: flex;
@@ -724,6 +770,14 @@ footer a {
 .legal a {
   overflow-wrap: anywhere;
 }
+.legal ul {
+  margin: 15px 0 0;
+  padding-left: 22px;
+  color: var(--muted);
+}
+.legal li + li {
+  margin-top: 8px;
+}
 
 @media (max-width: 1000px) {
   .shell {
@@ -736,12 +790,12 @@ footer a {
     font-size: 65px;
   }
   .node {
-    font-size: 9px;
+    font-size: 11px;
     padding: 9px;
     gap: 6px;
   }
   .art-top {
-    font-size: 6px;
+    font-size: 9px;
     left: 16px;
     right: 16px;
   }
@@ -785,12 +839,12 @@ footer a {
     height: 44px;
   }
   .brand-light {
-    font-size: 10px;
+    font-size: 11px;
   }
   .menu-toggle:not([hidden]) {
     display: block;
     background: transparent;
-    border: 1px solid var(--line);
+    border: 1px solid var(--control-line);
     border-radius: 50px;
     padding: 10px 15px;
     min-height: 44px;
@@ -816,7 +870,7 @@ footer a {
     gap: 8px;
   }
   .eyebrow {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.1em;
   }
 
@@ -838,7 +892,7 @@ footer a {
   }
   .hero-foot {
     margin-top: 30px;
-    font-size: 8px;
+    font-size: 11px;
     flex-wrap: wrap;
     line-height: 1.8;
   }
@@ -846,11 +900,11 @@ footer a {
     aspect-ratio: 1.2;
   }
   .node {
-    font-size: 9px;
+    font-size: 10px;
   }
   .art-top,
   .art-bottom {
-    font-size: 6px;
+    font-size: 8px;
     left: 15px;
     right: 15px;
   }
@@ -957,7 +1011,7 @@ footer a {
     padding-top: 10px;
   }
   .copyright {
-    font-size: 9px;
+    font-size: 11px;
   }
   .legal h1 {
     font-size: 43px;

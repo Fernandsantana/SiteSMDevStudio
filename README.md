@@ -1,7 +1,8 @@
 # SM Dev Studio — site institucional
 
 Apresentação comercial de software sob medida, centrada no contexto da operação e de quem usa.
-WhatsApp é o único contato público. Sem catálogo de produtos próprios ou depoimentos fictícios.
+Contatos públicos: WhatsApp e o e-mail de privacidade `privacidade@smdevstudio.com.br`.
+Rodapé de todas as páginas identifica razão social, CNPJ, cidade e e-mail (Decreto 7.962/2013). Sem catálogo de produtos próprios ou depoimentos fictícios.
 As interfaces são conceituais; essa definição fica nos termos, sem legenda na apresentação.
 Os termos descrevem avaliação de viabilidade, planejamento, proposta com prazo e investimento,
 aprovação formal e avaliação de mudanças. A privacidade explica o uso dos dados nessa avaliação.
@@ -18,7 +19,9 @@ Não usar travessões no conteúdo público. A ilustração de integração util
 HTML, CSS e JavaScript nativos, sem build, dependências de execução, fontes externas, analytics
 ou cookies. Conteúdo e links funcionam sem JavaScript. Movimento respeita redução de animação
 no sistema. Carrossel tem setas, teclado e rolagem por toque; avanço automático a cada 6,5 segundos
-quando visível, suspenso durante leitura com mouse/foco e toque. Não há botão global de pausa. Não envia mensagens automaticamente.
+quando visível, suspenso durante leitura com mouse/foco e toque. Botão "Pausar animações"
+(aria-pressed, só na página inicial) pausa ticker, órbitas, flutuações e o avanço automático;
+a escolha não é guardada no navegador. Não envia mensagens automaticamente.
 
 ## Prévia e validação
 
