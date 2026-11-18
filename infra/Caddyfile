@@ -6,7 +6,7 @@
   X-Frame-Options DENY
   Referrer-Policy strict-origin-when-cross-origin
   Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
-  Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+  Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
   Cache-Control "no-cache"
  }
 }
@@ -14,18 +14,53 @@
  admin off
  persist_config off
  auto_https off
+ servers {
+  trusted_proxies static {$SM_TRUSTED_PROXY_CIDRS}
+  trusted_proxies_strict
+ }
 }
 :8080 {
  root * /srv
  encode gzip
  import seguranca
- @private path /.git* /.env* /scripts/* /infra/* /*.md
- respond @private 404
- @methods not method GET HEAD
- respond @methods 405
- @health path /_health
- respond @health "ok" 200
- file_server
+ @private path /.git* /.env* /scripts/* /infra/* /server/* /secrets/* /*.md
+ handle @private {
+  respond 404
+ }
+ handle /api/contact {
+  @invalid not method POST
+  respond @invalid 405
+  request_body {
+   max_size 24KB
+  }
+  reverse_proxy contact:8081 {
+   header_up X-Contact-IP {client_ip}
+   transport http {
+    dial_timeout 3s
+    response_header_timeout 60s
+   }
+  }
+ }
+ handle /api/email-events/resend {
+  @invalidEventMethod not method POST
+  respond @invalidEventMethod 405
+  request_body {
+   max_size 256KB
+  }
+  reverse_proxy email-events:8082 {
+   transport http {
+    dial_timeout 3s
+    response_header_timeout 15s
+   }
+  }
+ }
+ handle {
+  @methods not method GET HEAD
+  respond @methods 405
+  @health path /_health
+  respond @health "ok" 200
+  file_server
+ }
  handle_errors {
   import seguranca
   rewrite * /404.html

@@ -1,0 +1,46 @@
+name: smdevstudio-site
+services:
+  email-events:
+    image: ${SM_EMAIL_EVENTS_IMAGE:?Defina imagem de eventos por ID imutavel}
+    pull_policy: never
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      EMAIL_EVENTS_SECRET_FILE: /run/secrets/resend_webhook_secret
+      EMAIL_EVENTS_DB: /data/email-events.sqlite3
+      EMAIL_EVENTS_BIND: 0.0.0.0
+      EMAIL_EVENTS_PORT: "8082"
+    secrets: [resend_webhook_secret]
+    volumes:
+      - type: bind
+        source: ${SM_EMAIL_EVENTS_DATA_DIR:?Defina diretorio de dados SQLite precriado}
+        target: /data
+        bind:
+          create_host_path: false
+    mem_limit: 96m
+    cpus: 0.25
+    pids_limit: 40
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8082/_health', timeout=2)"]
+      interval: 30s
+      # Inclui o inicio do interpretador sob a cota de CPU, alem do timeout HTTP.
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: local
+      options:
+        max-size: "5m"
+        max-file: "2"
+    networks:
+      contato:
+        aliases: [email-events]
+secrets:
+  resend_webhook_secret:
+    file: ${SM_EMAIL_EVENTS_SECRET_FILE:?Defina arquivo do segredo Resend fora do repositorio}
+networks:
+  contato:
+    internal: true

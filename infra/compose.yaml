@@ -12,6 +12,10 @@ services:
     environment:
       XDG_CONFIG_HOME: /tmp/config
       XDG_DATA_HOME: /tmp/data
+      SM_TRUSTED_PROXY_CIDRS: ${SM_TRUSTED_PROXY_CIDRS:?Defina IPs ou CIDRs exatos dos proxies confiaveis}
+    depends_on:
+      contact:
+        condition: service_healthy
     tmpfs: ["/tmp:size=8m,mode=1777"]
     volumes:
       - type: bind
@@ -40,7 +44,45 @@ services:
     networks:
       entrada:
         aliases: [smdevstudio-web]
+      contato:
+        aliases: [web]
+  contact:
+    image: ${SM_CONTACT_IMAGE:?Defina imagem SMTP por ID imutavel}
+    pull_policy: never
+    restart: unless-stopped
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      SMTP_USER: contato@smdevstudio.com.br
+      SMTP_PASSWORD_FILE: /run/secrets/smtp_password
+      CONTACT_ORIGINS: ${CONTACT_ORIGINS:?Defina origens HTTPS exatas}
+      CONTACT_TRUSTED_PROXY: web
+    secrets: [smtp_password]
+    mem_limit: 96m
+    cpus: 0.25
+    pids_limit: 40
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8081/_health', timeout=2)"]
+      interval: 30s
+      # Inclui o inicio do interpretador sob a cota de CPU, alem do timeout HTTP.
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: local
+      options:
+        max-size: "5m"
+        max-file: "2"
+    networks: [contato, smtp_saida]
+secrets:
+  smtp_password:
+    file: ${SM_SMTP_SECRET_FILE:?Defina arquivo secreto fora do repositorio e da raiz publica}
 networks:
+  contato:
+    internal: true
+  smtp_saida: {}
   entrada:
     name: smdevstudio-entrada
     internal: true

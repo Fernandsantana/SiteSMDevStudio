@@ -6,7 +6,15 @@ from datetime import datetime, timezone
 import hashlib, json, zipfile, argparse
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC = ['index.html', 'privacidade.html', 'termos.html', '404.html', 'styles.css', 'script.js', 'assets/logo-sm.png'] + [f'integracoes/backups-{product}/{page}.html' for product in ('malu', 'matheo') for page in ('index', 'privacidade', 'termos')]
+PUBLIC = ['index.html', 'privacidade.html', 'termos.html', '404.html', 'styles.css', 'script.js', 'assets/logo-sm.png', 'assets/logo-sm-web.webp'] + [f'integracoes/backups-{product}/{page}.html' for product in ('malu', 'matheo') for page in ('index', 'privacidade', 'termos')]
+PRIVATE = ['server/contact.py', 'server/test_contact.py', 'server/Dockerfile', 'server/.dockerignore',
+           'server/email_events.py', 'server/test_email_events.py',
+           'server/email_events_http.py', 'server/test_email_events_http.py', 'server/Dockerfile.events',
+           'scripts/coletar-eventos-email.py',
+           'infra/compose.yaml', 'infra/Caddyfile', 'infra/Dockerfile', 'infra/runtime.env.example',
+           'infra/compose.events.yaml', 'infra/email-events-monitor.service', 'infra/email-events-monitor.timer',
+           'infra/caddy/go.mod', 'infra/caddy/go.sum', 'infra/caddy/main.go', '.dockerignore',
+           'CONTATO.md', 'PUBLICACAO.md', 'infra/CLOUDFLARE.md', 'scripts/validar_containers.py']
 
 class Page(HTMLParser):
     def __init__(self):
@@ -47,9 +55,21 @@ def main():
         assert z.testzip() is None
         assert set(z.namelist()) == set(PUBLIC)
         assert all(hashlib.sha256(z.read(n)).hexdigest() == sha for n,sha in manifest.items())
-    (out/'manifesto.json').write_text(json.dumps({'estado':'candidata local, não publicada','arquivos':manifest},ensure_ascii=False,indent=2),encoding='utf-8')
-    (out/'SHA256SUMS.txt').write_text(hashlib.sha256(archive.read_bytes()).hexdigest()+'  site-publico.zip\n',encoding='ascii')
+    service = out / 'servico-contato.zip'
+    service_manifest = {}
+    with zipfile.ZipFile(service, 'x', zipfile.ZIP_DEFLATED) as z:
+        for name in PRIVATE:
+            path = ROOT / name
+            if not path.is_file() or path.is_symlink(): raise SystemExit(f'Fonte inválida: {name}')
+            service_manifest[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+            z.write(path, name)
+    with zipfile.ZipFile(service) as z:
+        assert z.testzip() is None and set(z.namelist()) == set(PRIVATE)
+        assert all(hashlib.sha256(z.read(n)).hexdigest() == sha for n, sha in service_manifest.items())
+    (out/'manifesto.json').write_text(json.dumps({'estado':'candidata local com SMTP; não publicada; segredo de produção não incluído','publico':manifest,'servico_privado':service_manifest},ensure_ascii=False,indent=2),encoding='utf-8')
+    (out/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in (archive, service)),encoding='ascii')
     (out/'PUBLICACAO.md').write_bytes((ROOT/'PUBLICACAO.md').read_bytes())
+    (out/'CONTATO.md').write_bytes((ROOT/'CONTATO.md').read_bytes())
     print(f'Pacote conferido: {archive}\n{len(PUBLIC)} arquivos públicos; links e hashes válidos.')
 
 if __name__ == '__main__': main()

@@ -1,6 +1,9 @@
 # Fragmento somente para a entrada independente, nunca para o proxy atual do Malu.
 smdevstudio.com {
- reverse_proxy smdevstudio-web:8080
+ route {
+  import cf-origem
+  import cf-upstream smdevstudio-web:8080
+ }
 }
 www.smdevstudio.com, smdevstudio.com.br, www.smdevstudio.com.br {
  redir https://smdevstudio.com{uri} 302

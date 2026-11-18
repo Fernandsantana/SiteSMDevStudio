@@ -1,0 +1,10 @@
+[Unit]
+Description=Conferir entregas de email a cada cinco minutos
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

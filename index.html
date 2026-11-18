@@ -3,22 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Software pensado para o seu negócio · SM Dev Studio</title>
+    <title>Software sob medida para empresas · SM Dev Studio</title>
     <meta
       name="description"
-      content="Software sob medida para simplificar sua operação. Design e desenvolvimento que começam pelas pessoas e pelo seu negócio."
+      content="Sistemas personalizados, plataformas web e automações feitos para a realidade da sua empresa. Conte o que você precisa à SM Dev Studio."
     />
     <meta name="theme-color" content="#f5f3f0" />
-    <link rel="icon" href="assets/logo-sm.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta
+      property="og:title"
+      content="Um sistema feito para sua empresa. SM Dev Studio"
+    />
+    <meta
+      property="og:description"
+      content="Software sob medida, integrações e automações pensados para o jeito que sua empresa trabalha."
+    />
+    <meta property="og:site_name" content="SM Dev Studio" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="assets/logo-sm-web.webp" />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
   </head>
-  <body>
+  <body class="home">
     <a class="skip" href="#conteudo">Pular para o conteúdo</a>
     <header class="shell">
       <a class="brand" href="index.html" aria-label="SM Dev Studio · início"
-        ><img src="assets/logo-sm.png" width="48" height="52" alt="" /><span
-          >SM<span class="brand-light">DEV STUDIO</span></span
+        ><img src="assets/logo-sm-web.webp" width="48" height="52" alt="" /><span
+          >SM <span class="brand-light">DEV STUDIO</span></span
         ></a
       ><button
         class="menu-toggle"
@@ -33,315 +45,479 @@
         ><a href="index.html#processo">Como fazemos</a
         ><a
           class="nav-contact"
-          href="https://wa.me/5511990102690"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Vamos conversar <span>↗</span></a
+          href="index.html#contato"
+          >Conte sua ideia <span aria-hidden="true">↗</span></a
         >
       </nav>
     </header>
+    <div class="scroll-progress" aria-hidden="true"></div>
     <main id="conteudo">
-      <section class="hero shell">
-        <div class="hero-top">
-          <p class="eyebrow"><span class="dot"></span> SOFTWARE SOB MEDIDA</p>
-          <button
-            class="motion-toggle"
-            type="button"
-            aria-pressed="false"
-            hidden
-          >
-            <span aria-hidden="true"></span>Pausar animações
-          </button>
-        </div>
+      <section class="hero shell" aria-labelledby="hero-title">
         <div class="hero-grid">
-          <div>
-            <h1>
-              Seu próximo<br />salto não cabe<br />num
-              <span class="outlined">molde.</span
-              ><span class="pink-dot">●</span>
-            </h1>
-            <p class="intro">
-              Criamos software a partir da sua operação.<br />Para sua equipe
-              trabalhar melhor e seu negócio ir além.
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="dot"></span> SOFTWARE SOB MEDIDA PARA EMPRESAS
             </p>
-            <a
-              class="cta"
-              href="https://wa.me/5511990102690?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20um%20software%20para%20minha%20empresa."
-              target="_blank"
-              rel="noopener noreferrer"
-              >Vamos desenhar sua solução <span>↗</span></a
-            >
-            <p class="micro">Você traz o desafio. A gente começa ouvindo.</p>
+            <h1 id="hero-title">
+              Um sistema feito para sua empresa<em
+                >do jeito que ela precisa!</em
+              >
+            </h1>
           </div>
-          <div
-            class="system-art"
-            role="img"
-            aria-label="Ilustração de tarefas, equipe e dados conectados em um fluxo personalizado"
+          <ul class="hero-checks">
+            <li>
+              <span aria-hidden="true">✓</span
+              ><strong>Seu <em>processo</em></strong>
+            </li>
+            <li>
+              <span aria-hidden="true">✓</span
+              ><strong>Suas <em>regras</em></strong>
+            </li>
+            <li>
+              <span aria-hidden="true">✓</span
+              ><strong>Software <br /><em>sob medida</em></strong>
+            </li>
+          </ul>
+          <div class="product-stage">
+            <div class="stage-label">
+              <span class="dot"></span> SUA OPERAÇÃO, SEU SISTEMA
+              <span>01 / SM</span>
+            </div>
+            <div class="dashboard">
+              <div class="dashboard-bar">
+                <span
+                  ><img
+                    src="assets/logo-sm-web.webp"
+                    width="22"
+                    height="24"
+                    alt=""
+                  />
+                  Meu sistema</span
+                ><span class="demo-badge">DEMONSTRAÇÃO</span>
+              </div>
+              <div class="dashboard-body">
+                <div class="dashboard-sidebar" aria-hidden="true">
+                  <span class="selected">◫</span><span>▤</span><span>◎</span
+                  ><span>↗</span><span class="sidebar-bottom">⚙</span>
+                </div>
+                <div class="dashboard-content">
+                  <div class="dashboard-heading">
+                    <div>
+                      <small>VISÃO DA OPERAÇÃO</small>
+                      <h2>Tudo no seu lugar</h2>
+                    </div>
+                    <span class="avatar">SM</span>
+                  </div>
+                  <div
+                    class="adaptive-grid"
+                    data-layout="sales"
+                    aria-label="Módulos de exemplo que se adaptam à operação"
+                  >
+                    <div class="adaptive-module clients">
+                      <span>◎</span><strong>Clientes</strong
+                      ><small>Relacionamentos reunidos</small>
+                      <div class="module-dots" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                      </div>
+                    </div>
+                    <div class="adaptive-module orders">
+                      <span>▤</span><strong>Pedidos</strong
+                      ><small>Do pedido à entrega</small>
+                      <div class="module-bars" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                      </div>
+                    </div>
+                    <div class="adaptive-module reports">
+                      <span>↗</span><strong>Relatórios</strong
+                      ><small>Visão para decidir</small>
+                      <div class="module-bars" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                      </div>
+                    </div>
+                    <div class="adaptive-module integrations">
+                      <span>⌘</span><strong>Integrações</strong
+                      ><small>Ferramentas conectadas</small>
+                      <div class="module-dots" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="profile-controls"
+                    aria-label="Exemplos de operação"
+                    hidden
+                  >
+                    <button
+                      type="button"
+                      data-profile="sales"
+                      aria-pressed="true"
+                    >
+                      Vendas</button
+                    ><button
+                      type="button"
+                      data-profile="management"
+                      aria-pressed="false"
+                    >
+                      Gestão</button
+                    ><button
+                      type="button"
+                      data-profile="automation"
+                      aria-pressed="false"
+                    >
+                      Automação
+                    </button>
+                  </div>
+                  <div class="dashboard-note">
+                    <span>✓</span> Prioridade em vendas, pedidos em destaque
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="module-float">
+              <span class="module-icon">⌘</span>
+              <div>
+                <small>FEITO PARA SUA ROTINA</small
+                ><strong>Seu processo define o layout</strong>
+              </div>
+              <span class="float-check">✓</span>
+            </div>
+            <div class="stage-footer">
+              <span>Clientes + Pedidos + Integrações</span
+              ><span>Seu jeito de trabalhar ↗</span>
+            </div>
+          </div>
+          <a
+            class="cta"
+            href="index.html#contato"
+            >Conte o que você precisa <span aria-hidden="true">↗</span></a
           >
-            <div class="art-top">
-              <span>DESENHADO PARA O SEU CONTEXTO</span
-              ><span class="signal"><i></i> CONECTADO</span>
-            </div>
-            <svg class="connections" viewBox="0 0 600 430" aria-hidden="true">
-              <defs>
-                <linearGradient id="line">
-                  <stop stop-color="#7727ca" />
-                  <stop offset="1" stop-color="#ee4f9a" />
-                </linearGradient>
-              </defs>
-              <g fill="none" stroke="url(#line)" stroke-width="1.4">
-                <path
-                  d="M60 90 H160 Q190 90 190 120 V195 Q190 220 220 220 H300"
-                />
-                <path d="M50 340 H165 Q190 340 190 315 V245 Q190 220 220 220" />
-                <path d="M300 220 H380 Q410 220 410 190 V100 H540" />
-                <path d="M300 220 H380 Q410 220 410 250 V340 H540" />
-                <path d="M300 40 V400" opacity=".25" />
-              </g>
-              <g class="pulses" fill="#ff69ac">
-                <circle cx="190" cy="120" r="4" />
-                <circle cx="410" cy="190" r="4" />
-                <circle cx="410" cy="310" r="4" />
-              </g>
-              <circle
-                class="orbit"
-                cx="300"
-                cy="220"
-                r="81"
-                fill="none"
-                stroke="#7d4cb0"
-                stroke-dasharray="2 12"
-              />
-              <circle
-                cx="300"
-                cy="220"
-                r="60"
-                fill="#25192f"
-                stroke="#d4529a"
-              />
-              <text
-                x="300"
-                y="216"
-                text-anchor="middle"
-                fill="#fff"
-                font-size="20"
-                font-family="system-ui"
-                font-weight="600"
-              >
-                seu jeito
-              </text>
-              <text
-                x="300"
-                y="239"
-                text-anchor="middle"
-                fill="#cba7d4"
-                font-size="10"
-                font-family="system-ui"
-                letter-spacing="2"
-              >
-                DE TRABALHAR
-              </text>
-            </svg>
-            <div class="node n1"><span>01</span> Sua equipe <b>↗</b></div>
-            <div class="node n2"><span>02</span> Seus processos <b>↗</b></div>
-            <div class="node n3"><span>03</span> Seus dados <b>↗</b></div>
-            <div class="node n4"><span>04</span> Suas decisões <b>↗</b></div>
-            <div class="art-bottom">
-              <span>MENOS ATRITO.</span><span>MAIS FLUIDEZ. ↗</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-foot">
-          <span>ESTRATÉGIA / DESIGN / DESENVOLVIMENTO</span
-          ><a href="#possibilidades">Explore as possibilidades ↓</a>
         </div>
       </section>
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
+      <div class="statement-strip" aria-hidden="true">
+        <div>
           <span
-            >MENOS RETRABALHO <b>✳</b> MAIS CONTROLE <b>✳</b> DO SEU JEITO
-            <b>✳</b> </span
+            >MENOS LIMITES <b>✳</b> MAIS POSSIBILIDADES <b>✳</b> DO SEU JEITO
+            <b>✳</b></span
           ><span
-            >MENOS RETRABALHO <b>✳</b> MAIS CONTROLE <b>✳</b> DO SEU JEITO
-            <b>✳</b>
-          </span>
+            >MENOS LIMITES <b>✳</b> MAIS POSSIBILIDADES <b>✳</b> DO SEU JEITO
+            <b>✳</b></span
+          >
         </div>
       </div>
-      <section id="possibilidades" class="possibilities shell">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">O QUE PODE MUDAR</p>
-            <h2>Onde hoje tem atrito,<br />pode ter <em>fluidez.</em></h2>
+      <section class="pain-section section shell" aria-labelledby="pain-title">
+        <div class="section-heading">
+          <p class="eyebrow">01 / O PONTO DE PARTIDA</p>
+          <h2 id="pain-title">
+            Seu negócio tem um jeito<br /><em>seu sistema acompanha?</em>
+          </h2>
+        </div>
+        <div class="pain-grid">
+          <article>
+            <span class="line-icon" aria-hidden="true">⊞</span>
+            <h3>Falta o que você precisa?</h3>
+            <p>A função que importa? Não tem!</p>
+          </article>
+          <article>
+            <span class="line-icon" aria-hidden="true">≡</span>
+            <h3>Sobra o que você não usa?</h3>
+            <p>Você paga por funções que não usa!</p>
+          </article>
+          <article>
+            <span class="line-icon" aria-hidden="true">↻</span>
+            <h3>Sua equipe perde tempo?</h3>
+            <p>O sistema trava, a planilha cresce!</p>
+          </article>
+        </div>
+      </section>
+      <section id="diferencial" class="solution-section section">
+        <div class="shell solution-grid">
+          <div class="section-heading">
+            <p class="eyebrow">02 / O ENCAIXE CERTO</p>
+            <h2>
+              Então por que não fazer<br />um sistema <em>do seu jeito?</em>
+            </h2>
+            <p>A empresa é sua, o sistema também deve ser!</p>
+            <ul class="benefits">
+              <li>As funções certas</li>
+              <li>O seu jeito de trabalhar</li>
+              <li>Espaço para evoluir</li>
+            </ul>
           </div>
-          <div class="carousel-controls">
-            <span id="slide-count" aria-live="polite">01 / 03</span
-            ><button class="prev" aria-label="Possibilidade anterior">←</button
-            ><button class="next" aria-label="Próxima possibilidade">→</button>
+          <div class="comparison" data-mode="custom">
+            <div
+              class="segmented"
+              aria-label="Comparar exemplos de sistemas"
+              hidden
+            >
+              <button type="button" data-mode="generic" aria-pressed="false">
+                Sistema genérico</button
+              ><button type="button" data-mode="custom" aria-pressed="true">
+                Sob medida <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+            <div class="comparison-heading">
+              <span class="eyebrow">SUA EMPRESA NO CENTRO</span
+              ><strong id="comparison-title">O que sua equipe precisa</strong>
+            </div>
+            <div class="compare-modules">
+              <div class="relevant"><span>◎</span>Clientes <b>✓</b></div>
+              <div class="extra" hidden><span>▧</span>Campanhas</div>
+              <div class="relevant"><span>▤</span>Pedidos <b>✓</b></div>
+              <div class="extra" hidden><span>◷</span>Reservas</div>
+              <div class="relevant"><span>↗</span>Relatórios <b>✓</b></div>
+              <div class="extra" hidden><span>◈</span>Catálogo</div>
+              <div class="custom-module">
+                <span>⌘</span>Seu processo <b>✓</b>
+              </div>
+            </div>
+
+
           </div>
         </div>
+      </section>
+      <section id="possibilidades" class="section shell">
+        <div class="section-heading">
+          <p class="eyebrow">03 / POSSIBILIDADES</p>
+          <h2>Qual <em>problema</em> você quer <em>resolver</em>?</h2>
+        </div>
         <div
-          class="carousel"
+          class="showcase-grid"
+          id="solutions-carousel"
           role="region"
-          aria-roledescription="carrossel"
-          aria-label="Possibilidades de software"
+          aria-label="Exemplos de soluções"
           tabindex="0"
         >
-          <article class="slide" role="group" aria-label="1 de 3">
-            <div class="slide-copy">
-              <span class="slide-number">01 / OPERAÇÃO</span>
-              <h3>Menos planilhas.<br />Mais visão do todo.</h3>
-              <p>
-                Reúna informações, tarefas e decisões em um sistema que
-                acompanha o fluxo da sua equipe.
-              </p>
-              <span class="pill">Sistemas de gestão</span>
-            </div>
-            <div class="mini-ui" aria-hidden="true">
-              <div class="ui-top">Sua operação <span>●</span></div>
-              <div class="ui-tabs">
-                <span>Visão geral</span><span>Atividades</span
-                ><span>Equipe</span>
+          <article class="showcase-card">
+            <div class="showcase-visual operation-demo" aria-hidden="true">
+              <div class="visual-top">Visão da operação <span>◫</span></div>
+              <div class="motion-chart">
+                <span>INFORMAÇÃO QUE VIRA DECISÃO</span
+                ><svg viewBox="0 0 360 120" fill="none">
+                  <path class="chart-grid" d="M0 30H360M0 60H360M0 90H360" />
+                  <path
+                    class="chart-area"
+                    d="M0 105L45 82L90 92L135 58L180 67L225 30L270 45L315 13L360 23V120H0Z"
+                  />
+                  <path
+                    class="chart-line"
+                    pathLength="1"
+                    d="M0 105L45 82L90 92L135 58L180 67L225 30L270 45L315 13L360 23"
+                  />
+                </svg>
               </div>
-              <div class="ui-row">
-                <i class="check">✓</i
-                ><span
-                  >Informações reunidas<small
-                    >Uma fonte para toda a equipe</small
-                  ></span
-                ><b>↗</b>
+              <div class="task-line">
+                <span class="task-check">✓</span> Clientes e pedidos
+                <small>Reunidos</small>
               </div>
-              <div class="ui-row">
-                <i class="check">✓</i
-                ><span
-                  >Próximos passos claros<small
-                    >Cada tarefa no seu lugar</small
-                  ></span
-                ><b>↗</b>
+              <div class="task-line">
+                <span class="task-check">✓</span> Atividades da equipe
+                <small>Alinhadas</small>
               </div>
-              <div class="ui-chart">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              <div class="task-line">
+                <span class="task-check">✓</span> Informações do negócio
+                <small>Acessíveis</small>
               </div>
             </div>
-          </article>
-          <article class="slide" role="group" aria-label="2 de 3">
-            <div class="slide-copy">
-              <span class="slide-number">02 / EXPERIÊNCIA</span>
-              <h3>Fácil para quem usa.<br />Valioso para quem cria.</h3>
-              <p>
-                Transforme seu serviço em uma experiência digital que faz
-                sentido, da primeira tela à última ação.
-              </p>
-              <span class="pill">Plataformas e aplicações web</span>
-            </div>
-            <div class="experience-visual" aria-hidden="true">
-              <div class="device">
-                <span>Bom ter você aqui.</span
-                ><strong>O que vamos<br />resolver hoje?</strong>
-                <div class="device-option">Meu próximo passo <b>↗</b></div>
-                <div class="device-option">Tudo organizado <b>✓</b></div>
-                <div class="device-button">Continuar →</div>
-              </div>
-              <span class="floating-label">Pensado para pessoas.</span>
+            <div class="showcase-copy">
+              <span class="eyebrow">SISTEMAS DE GESTÃO</span>
+              <h3>Menos planilhas<br />Mais controle</h3>
+              <p>Sua operação inteira no mesmo lugar</p>
             </div>
           </article>
-          <article class="slide" role="group" aria-label="3 de 3">
-            <div class="slide-copy">
-              <span class="slide-number">03 / INTEGRAÇÃO</span>
-              <h3>Suas ferramentas.<br />Na mesma conversa.</h3>
-              <p>
-                Conecte sistemas e automatize etapas repetitivas para sua equipe
-                focar no que exige atenção.
-              </p>
-              <span class="pill">Integrações e automações</span>
+          <article class="showcase-card">
+            <div class="showcase-visual automation-demo" aria-hidden="true">
+              <div class="automation-node">
+                ▤ <span>Pedido recebido</span><b>✓</b>
+              </div>
+              <div class="connector"></div>
+              <div class="automation-node branded">
+                <img
+                  src="assets/logo-sm-web.webp"
+                  width="25"
+                  height="27"
+                  alt=""
+                /><span>Dados integrados</span><b>✓</b>
+              </div>
+              <div class="connector"></div>
+              <div class="automation-node">
+                ↗ <span>Equipe notificada</span><b>✓</b>
+              </div>
             </div>
-            <div class="integration-visual" aria-hidden="true">
-              <span>Entrada</span><b>→</b
-              ><strong class="integration-brand"
-                ><img
-                  src="assets/logo-sm.png"
-                  width="56"
-                  height="61"
-                  alt="" /></strong
-              ><b>→</b><span>Próxima ação</span>
+            <div class="showcase-copy">
+              <span class="eyebrow">AUTOMAÇÕES E INTEGRAÇÕES</span>
+              <h3>Repetitivo?<br />Automatize</h3>
+              <p>Conecte ferramentas, libere sua equipe</p>
+            </div>
+          </article>
+          <article class="showcase-card">
+            <div class="showcase-visual platform-demo" aria-hidden="true">
+              <div class="portal">
+                <div class="portal-top">
+                  <span class="dot"></span> Seu portal <span>◎</span>
+                </div>
+                <strong>Uma experiência<br />com a sua cara</strong>
+                <div class="portal-options">
+                  <span>Meus serviços ↗</span><span>Solicitações ↗</span>
+                </div>
+                <div class="portal-action">Tudo em um só lugar →</div>
+              </div>
+            </div>
+            <div class="showcase-copy">
+              <span class="eyebrow">PLATAFORMAS E APLICAÇÕES WEB</span>
+              <h3>Sua ideia<br />Sua plataforma</h3>
+              <p>O que ainda não existe, a gente desenvolve</p>
             </div>
           </article>
         </div>
       </section>
-      <section id="processo" class="process-section">
+      <section class="modular-section section shell" id="evolucao">
+        <div class="modular-layout">
+          <div class="section-heading">
+            <p class="eyebrow">04 / NO RITMO DO SEU NEGÓCIO</p>
+            <h2>
+              Comece com o essencial<br /><em>evolua quando precisar</em>
+            </h2>
+            <p>Resolva o que importa agora e amplie depois!</p>
+          </div>
+          <div class="module-builder">
+            <div class="builder-heading">
+              <span class="eyebrow">UM EXEMPLO DE EVOLUÇÃO</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <div class="bento">
+              <div class="bento-core">
+                <span>◎</span><strong>Gestão de clientes</strong
+                ><small>O ponto de partida</small>
+              </div>
+              <div class="bento-module" id="module-orders">
+                <span>▤</span><strong>Pedidos</strong>
+              </div>
+              <div class="bento-module" id="module-reports">
+                <span>↗</span><strong>Relatórios</strong>
+              </div>
+              <div class="bento-module wide" id="module-integrations">
+                <span>⌘</span><strong>Integrações e automações</strong>
+              </div>
+            </div>
+            <div class="module-controls" hidden>
+
+              <div>
+                <button
+                  type="button"
+                  data-module="orders"
+                  aria-pressed="true"
+                  aria-controls="module-orders"
+                >
+                  Pedidos <span>✓</span></button
+                ><button
+                  type="button"
+                  data-module="reports"
+                  aria-pressed="true"
+                  aria-controls="module-reports"
+                >
+                  Relatórios <span>✓</span></button
+                ><button
+                  type="button"
+                  data-module="integrations"
+                  aria-pressed="true"
+                  aria-controls="module-integrations"
+                >
+                  Integrações <span>✓</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="processo" class="process-section section">
         <div class="shell">
-          <p class="eyebrow">SEM CAIXA-PRETA</p>
           <div class="process-intro">
-            <h2>Construído com você.<br />Em cada decisão.</h2>
-            <p>
-              Uma conversa direta. Um caminho visível.<br />Entregas que você
-              pode experimentar.
-            </p>
+            <div>
+              <p class="eyebrow">05 / COMO A GENTE TRABALHA</p>
+              <h2>Você explica o problema<br />A gente cuida da <em>solução</em></h2>
+            </div>
           </div>
           <div class="steps">
             <article>
-              <span>01 · IMERSÃO</span>
-              <h3>Antes do código,<br />o seu contexto.</h3>
-              <p>Entendemos onde a rotina trava e o que precisa mudar.</p>
+              <span>01 / ENTENDEMOS</span>
+              <h3>Você conta</h3>
+              <p>Entendemos sua rotina e o que precisa mudar</p>
             </article>
             <article>
-              <span>02 · CONSTRUÇÃO</span>
-              <h3>Você vê.<br />Testa. Participa.</h3>
-              <p>
-                Desenhamos e desenvolvemos em etapas, com espaço para ajustar.
-              </p>
+              <span>02 / DESENVOLVEMOS</span>
+              <h3>A gente constrói</h3>
+              <p>Proposta aprovada, desenvolvimento com você</p>
             </article>
             <article>
-              <span>03 · EVOLUÇÃO</span>
-              <h3>Pronto para usar.<br />Aberto a evoluir.</h3>
-              <p>O uso real orienta os próximos passos do produto.</p>
+              <span>03 / EVOLUÍMOS</span>
+              <h3>O sistema evolui</h3>
+              <p>Novas necessidades, próximas etapas combinadas</p>
             </article>
           </div>
         </div>
       </section>
-      <section class="contact shell" id="contato">
-        <p class="eyebrow">SEU DESAFIO É O PONTO DE PARTIDA</p>
+      <section class="contact section shell" id="contato">
+        <div class="contact-symbol" aria-hidden="true">↗</div>
+        <p class="eyebrow">VAMOS COMEÇAR POR UMA CONVERSA</p>
         <h2>
-          O que está segurando<br />o próximo passo<br /><em
-            >da sua empresa?</em
+          O que seu sistema<br />não faz hoje que<br /><em
+            >sua empresa precisa?</em
           >
         </h2>
-        <a
-          class="contact-link"
-          href="https://wa.me/5511990102690?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20desafio%20da%20minha%20empresa."
-          target="_blank"
-          rel="noopener noreferrer"
-          >Conte para a gente <span>↗</span></a
-        >
-        <p class="micro">
-          Ao clicar, o WhatsApp, serviço da Meta, é aberto em nova aba. Veja
-          como tratamos seus dados na
-          <a href="privacidade.html">Política de Privacidade</a>.
+        <p class="contact-intro">
+          Seu próximo sistema começa com uma conversa
         </p>
+        <form class="contact-form" id="contact-form" action="/api/contact" method="post">
+          <div class="contact-fields">
+            <div class="contact-field">
+              <label for="contact-name">Seu nome</label>
+              <input id="contact-name" name="name" autocomplete="name" required minlength="2" maxlength="100" placeholder="Como podemos chamar você?" />
+            </div>
+            <div class="contact-field">
+              <label for="contact-email">Seu e-mail</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="voce@empresa.com.br" />
+            </div>
+          </div>
+          <div class="contact-field">
+            <label for="contact-company">Empresa <span>(opcional)</span></label>
+            <input id="contact-company" name="company" autocomplete="organization" maxlength="120" placeholder="Nome da sua empresa" />
+          </div>
+          <div class="contact-field">
+            <label for="contact-message">O que você precisa resolver?</label>
+            <textarea id="contact-message" name="message" required minlength="10" maxlength="5000" rows="4" placeholder="Conte um pouco sobre sua ideia ou o desafio da sua operação"></textarea>
+          </div>
+          <div class="contact-trap" aria-hidden="true" inert>
+            <label for="contact-website">Deixe este campo vazio</label>
+            <input id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <p class="contact-privacy">Usamos seus dados para responder à sua mensagem, conforme a <a href="privacidade.html">Política de Privacidade</a></p>
+          <div class="contact-actions">
+            <button class="cta contact-submit" type="submit">Enviar mensagem <span aria-hidden="true">↗</span></button>
+            <a class="contact-email" href="mailto:contato@smdevstudio.com.br">contato@smdevstudio.com.br</a>
+          </div>
+          <p class="contact-status" id="contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+          <noscript><p>Você também pode enviar pelo formulário sem JavaScript ou escrever diretamente para nosso e-mail</p></noscript>
+        </form>
       </section>
     </main>
     <footer class="shell">
       <a class="brand" href="index.html"
-        ><img
-          src="assets/logo-sm.png"
-          width="40"
-          height="43"
-          alt=""
-        /><span>SM<span class="brand-light">DEV STUDIO</span></span></a
+        ><img src="assets/logo-sm-web.webp" width="40" height="43" alt="" /><span
+          >SM <span class="brand-light">DEV STUDIO</span></span
+        ></a
       ><span class="copyright">© 2026 SM Dev Studio</span>
       <nav aria-label="Informações">
         <a href="privacidade.html">Privacidade</a
         ><a href="termos.html">Termos</a
         ><a
-          href="https://wa.me/5511990102690"
-          target="_blank"
-          rel="noopener noreferrer"
-          >WhatsApp ↗</a
+          href="index.html#contato"
+          >Contato ↗</a
         >
       </nav>
       <p class="company">
-        SM DEVSTUDIO SERVIÇOS DE TECNOLOGIA LTDA · CNPJ 62.233.110/0001-50 ·
-        São Paulo/SP · Contato:
-        <a href="mailto:privacidade@smdevstudio.com.br"
+        <strong>SM DEVSTUDIO SERVIÇOS DE TECNOLOGIA LTDA</strong
+        ><span>CNPJ 62.233.110/0001-50 · São Paulo/SP</span
+        ><a href="mailto:privacidade@smdevstudio.com.br"
           >privacidade@smdevstudio.com.br</a
         >
       </p>
